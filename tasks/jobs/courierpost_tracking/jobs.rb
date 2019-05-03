@@ -1,0 +1,4 @@
+require_relative 'get_consignment_list'
+require_relative 'add_state_to_consignment'
+require_relative 'add_tracking_url_to_consignment'
+require_relative 'add_courierpost_tracking_to_consignment'

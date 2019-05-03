@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require_relative 'tasks/tasks'
+
+task = case ARGV[0].downcase.to_sym
+when :courierpost_tracking
+  CourierpostTracking.new customer_id: ARGV[1]
+else
+  puts 'No such task'
+end
+
+task.run
