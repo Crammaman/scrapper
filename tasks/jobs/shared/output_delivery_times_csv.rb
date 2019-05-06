@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'csv'
 class OutputDeliveryDatesCsvSharedJob < Job
   def initialize args

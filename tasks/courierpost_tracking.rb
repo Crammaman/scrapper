@@ -8,18 +8,17 @@ class CourierpostTracking < Task
 
   def run
     # Consignments are [ { :id, :consignment_number } ]
+    raise 'No customer id provided' if @customer_id.nil?
     consignments = GetConsignmentListJob.perform_now @customer_id
 
-    status_jobs = JobSet.new AddStateToConsignmentJob, consignments
-    consignments = status_jobs.perform_in_batches_of 20
+    consignments = consignments.map{|consignment| consignment.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}}
 
-    # consignments.reject! { |consignment| consignment[:state] != 'despatched' }
+    consignments = JobSet.perform_now_in_batches_of 20, AddStateToConsignmentJob, consignments
+    consignments.reject! { |consignment| consignment[:state] != 'despatched' }
 
-    tracking_url_jobs = JobSet.new AddTrackingUrlToConsignmentJob, consignments
-    consignments = tracking_url_jobs.perform_in_batches_of 20
+    consignments = JobSet.perform_now_in_batches_of 20, AddTrackingUrlToConsignmentJob, consignments
 
-    courierpost_tracking_jobs = JobSet.new AddCourierpostTrackingToConsignmentJob, consignments
-    consignments = courierpost_tracking_jobs.perform_in_batches_of 20
+    consignments = JobSet.perform_now_in_batches_of 20, AddCourierpostTrackingToConsignmentJob, consignments
 
     OutputDeliveryDatesCsvSharedJob.perform_now consignments: consignments, task_name: 'courierpost_tracking'
     UploadDeliveryDatesCsvSharedJob.perform_now task_name: 'courierpost_tracking'

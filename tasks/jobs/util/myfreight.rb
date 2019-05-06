@@ -3,7 +3,7 @@ require 'net/http'
 require 'net/ftp'
 require 'json'
 module Util
-  MYFREIGHT_DOMAIN = 'https://qa.teamwilberforce.com'
+  MYFREIGHT_DOMAIN = 'https://go.myfreight.com.au'
   MYFREIGHT_FTP = 'ftp.qa.teamwilberforce.com'
 
   def myfreight_user
@@ -12,6 +12,14 @@ module Util
 
   def myfreight_consignment id
     myfreight_request "/api/consignments/#{id}", :get
+  end
+
+  def myfreight_consignment_info id
+    myfreight_request "/api/consignment_information?id=#{id}", :get
+  end
+
+  def myfreight_consignment_search query
+    myfreight_request "/api/consignments/search?query=#{query}", :get
   end
 
   def myfreight_consignment_tracking id
@@ -30,7 +38,7 @@ module Util
   end
 
   def myfreight_request request_path, method, payload = {}, response_content_type = :json
-    print("Sending #{MYFREIGHT_DOMAIN}#{request_path}                                               \r")
+    puts("Sending #{MYFREIGHT_DOMAIN}#{request_path}")
     uri = URI("#{MYFREIGHT_DOMAIN}#{request_path}")
 
     case method
