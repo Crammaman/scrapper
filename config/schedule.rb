@@ -16,6 +16,7 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
+set :whenever_command_environment_variables, ->{ fetch(:default_env) }
 every :day, at: '4:00 am' do
   script 'scrapper'
 end
