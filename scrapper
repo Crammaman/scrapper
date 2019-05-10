@@ -1,11 +1,6 @@
 #!/usr/bin/env ruby
 require_relative 'tasks/tasks'
-require_relative 'config/secrets'
-
-Secrets = SecretsConfig.instance
-
-require 'dotenv'
-Dotenv.load
+require_relative 'config/config'
 
 unless ARGV[0].nil?
   task = case ARGV[0].downcase.to_sym
@@ -18,6 +13,7 @@ unless ARGV[0].nil?
   end
 
   task.run
+
 else
   puts Secrets.myfreight_api_token
   puts 'No task parameter present'

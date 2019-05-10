@@ -5,7 +5,7 @@ class SecretsConfig
   # This may or may not be a hilariously bad idea
   def initialize
 
-    secrets = YAML.load File.open('.secrets.yaml')
+    secrets = YAML.load File.open('.secrets.yml')
 
     secrets.each do |key,value|
       self.class.module_eval { attr_accessor key.to_sym }
