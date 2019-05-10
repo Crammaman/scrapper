@@ -9,4 +9,4 @@ set :deploy_to, "/srv/scrapper"
 set :user, "scrapper"
 
 append :linked_files, ".env"
-append :linked_files, ".secrets.yaml"
+append :linked_files, ".secrets.yml"
