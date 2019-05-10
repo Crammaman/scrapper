@@ -17,7 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 every :day, at: '4:00 am' do
-  command 'scrapper'
+  script 'scrapper'
 end
 
 # Learn more: http://github.com/javan/whenever
