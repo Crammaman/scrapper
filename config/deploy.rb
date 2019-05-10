@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "scrapper"
-set :repo_url, "git@github.com:FM-Systems/scrapper.git"
+set :repo_url, "git@github.com:Crammaman/scrapper.git"
 
 set :deploy_to, "/srv/scrapper"
 
