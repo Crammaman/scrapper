@@ -10,3 +10,8 @@ set :user, "scrapper"
 
 append :linked_files, ".env"
 append :linked_files, ".secrets.yml"
+
+# Environment variables are set by dotenv when scrapper is run so when ever does
+# not have to have the environment variables handed to it as they will be loaded
+# at run time anyways.
+set :whenever_command_environment_variables, ->{ fetch(:default_env) }
