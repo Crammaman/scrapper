@@ -1,4 +1,4 @@
-class ConsignmentInfoFromConsignmentNumberSharedJob < Job
+class ConsignmentIdFromConsignmentNumberSharedJob < Job
   def initialize consignment_number
     @consignment_number = consignment_number
   end
@@ -6,6 +6,6 @@ class ConsignmentInfoFromConsignmentNumberSharedJob < Job
   def perform
     search_result = myfreight_consignment_search @consignment_number
 
-    myfreight_consignment_info search_result['consignments'][0]['id']
+    { id: search_result['consignments'][0]['id'], consignment_number: @consignment_number }
   end
 end

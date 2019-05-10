@@ -3,11 +3,9 @@ require 'net/http'
 require 'net/ftp'
 require 'json'
 module Util
-  MYFREIGHT_DOMAIN = 'https://go.myfreight.com.au'
-  MYFREIGHT_FTP = 'ftp.qa.teamwilberforce.com'
 
   def myfreight_user
-    { username: 'api@myfreightconsignments.com.au', token: '2x9x3uX5otje_irzDEkC' }
+    { username: ENV['MYFREIGHT_USER'], token: Secrets.myfreight_api_token }
   end
 
   def myfreight_consignment id
@@ -32,14 +30,14 @@ module Util
   end
 
   def myfreight_ftp_upload file, user = 'generic', password = 'KBmhPtV8aqtyuWm'
-    Net::FTP.open( MYFREIGHT_FTP, user, password ) do |ftp|
+    Net::FTP.open( ENV['MYFREIGHT_FTP'], user, password ) do |ftp|
       ftp.putbinaryfile( file )
     end
   end
 
   def myfreight_request request_path, method, payload = {}, response_content_type = :json
-    puts("Sending #{MYFREIGHT_DOMAIN}#{request_path}")
-    uri = URI("#{MYFREIGHT_DOMAIN}#{request_path}")
+    # puts("Sending #{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
+    uri = URI("#{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
 
     case method
     when :get

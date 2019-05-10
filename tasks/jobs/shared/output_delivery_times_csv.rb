@@ -7,6 +7,7 @@ class OutputDeliveryDatesCsvSharedJob < Job
   end
 
   def perform
+    FileUtils.mkdir_p "output/#{@task_name}"
     CSV.open( "output/#{@task_name}/#{@task_name}_delivery_dates.csv", 'wb') do |csv|
       csv << ['consignment_number', 'delivery_date']
       @consignments.each do |consignment|

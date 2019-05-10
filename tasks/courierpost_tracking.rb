@@ -9,7 +9,8 @@ class CourierpostTracking < Task
   def run
     # Consignments are [ { :id, :consignment_number } ]
     raise 'No customer id provided' if @customer_id.nil?
-    consignments = GetConsignmentListJob.perform_now @customer_id
+    # consignments = GetConsignmentListJob.perform_now @customer_id
+    consignments = JobSet.perform_now_in_batches_of 20, ConsignmentIdFromConsignmentNumberSharedJob, CSV.read('/home/sam/Downloads/courierpost_consignment_numbers.csv').map{|row| row[0]}
 
     consignments = consignments.map{|consignment| consignment.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}}
 

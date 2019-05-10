@@ -1,0 +1,90 @@
+# Logfile created on 2019-05-10 12:23:36 +1000 by logger.rb/56438
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-05-10 12:23:36 +1000 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [9e831731] Running [ -d ~/.rvm ] as scrapper@192.168.1.32
+ DEBUG [9e831731] Command: [ -d ~/.rvm ]
+ DEBUG [5a0ef7fc] Finished in 0.911 seconds with exit status 1 (failed).
+ DEBUG [faa27e5d] Running [ -d /usr/local/rvm ] as scrapper@192.168.1.32
+ DEBUG [faa27e5d] Command: [ -d /usr/local/rvm ]
+ DEBUG [bfa1dc8b] Finished in 0.051 seconds with exit status 1 (failed).
+ DEBUG [7106e4e7] Running ~/.rvm/bin/rvm version as scrapper@192.168.1.32
+ DEBUG [7106e4e7] Command: ~/.rvm/bin/rvm version
+ DEBUG [8108388b] 	bash: /home/scrapper/.rvm/bin/rvm: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-05-10 12:24:21 +1000 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [fd023ba6] Running [ -d ~/.rvm ] as scrapper@192.168.1.32
+ DEBUG [fd023ba6] Command: [ -d ~/.rvm ]
+ DEBUG [9e267db1] Finished in 0.714 seconds with exit status 1 (failed).
+ DEBUG [a6420593] Running [ -d /usr/local/rvm ] as scrapper@192.168.1.32
+ DEBUG [a6420593] Command: [ -d /usr/local/rvm ]
+ DEBUG [d65a84ba] Finished in 0.052 seconds with exit status 1 (failed).
+ DEBUG [f0dfd421] Running ~/.rvm/bin/rvm version as scrapper@192.168.1.32
+ DEBUG [f0dfd421] Command: ~/.rvm/bin/rvm version
+ DEBUG [42eec388] 	bash: /home/scrapper/.rvm/bin/rvm: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-05-10 12:29:34 +1000 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [b2efe747] Running [ -d ~/.rvm ] as scrapper@192.168.1.32
+ DEBUG [b2efe747] Command: [ -d ~/.rvm ]
+ DEBUG [8c7a24f7] Finished in 0.704 seconds with exit status 1 (failed).
+ DEBUG [401454e1] Running [ -d /usr/local/rvm ] as scrapper@192.168.1.32
+ DEBUG [401454e1] Command: [ -d /usr/local/rvm ]
+ DEBUG [b32d8510] Finished in 0.049 seconds with exit status 0 (successful).
+ DEBUG [1ee465ef] Running /usr/local/rvm/bin/rvm version as scrapper@192.168.1.32
+ DEBUG [1ee465ef] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [2e8ddcdf] 	rvm 1.29.8 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [2e8ddcdf] Finished in 0.282 seconds with exit status 0 (successful).
+ DEBUG [6c487b44] Running /usr/local/rvm/bin/rvm current as scrapper@192.168.1.32
+ DEBUG [6c487b44] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [238387f2] 	system
+ DEBUG [238387f2] Finished in 0.291 seconds with exit status 0 (successful).
+ DEBUG [00d9e3d7] Running /usr/local/rvm/bin/rvm default do ruby --version as scrapper@192.168.1.32
+ DEBUG [00d9e3d7] Command: /usr/local/rvm/bin/rvm default do ruby --version
+ DEBUG [496a8fda] 	/usr/local/rvm/scripts/set: line 19: exec: ruby: not found
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-05-10 12:35:59 +1000 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [360873a3] Running [ -d ~/.rvm ] as scrapper@192.168.1.32
+ DEBUG [360873a3] Command: [ -d ~/.rvm ]
+ DEBUG [6bb9d98c] Finished in 0.723 seconds with exit status 1 (failed).
+ DEBUG [c1d8d650] Running [ -d /usr/local/rvm ] as scrapper@192.168.1.32
+ DEBUG [c1d8d650] Command: [ -d /usr/local/rvm ]
+ DEBUG [97c3b884] Finished in 0.047 seconds with exit status 0 (successful).
+ DEBUG [d17d47f7] Running /usr/local/rvm/bin/rvm version as scrapper@192.168.1.32
+ DEBUG [d17d47f7] Command: /usr/local/rvm/bin/rvm version
+ DEBUG [aba08106] 	rvm 1.29.8 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [aba08106] Finished in 0.289 seconds with exit status 0 (successful).
+ DEBUG [c2802d37] Running /usr/local/rvm/bin/rvm current as scrapper@192.168.1.32
+ DEBUG [c2802d37] Command: /usr/local/rvm/bin/rvm current
+ DEBUG [7e5d3eb4] 	ruby-2.6.3
+ DEBUG [7e5d3eb4] Finished in 0.281 seconds with exit status 0 (successful).
+ DEBUG [f62675c5] Running /usr/local/rvm/bin/rvm default do ruby --version as scrapper@192.168.1.32
+ DEBUG [f62675c5] Command: /usr/local/rvm/bin/rvm default do ruby --version
+ DEBUG [977a471e] 	ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
+ DEBUG [977a471e] Finished in 0.457 seconds with exit status 0 (successful).
+  INFO rbenv: rbenv_ruby is not set; ruby version will be defined by the remote hosts via rbenv
+  INFO [9f07af88] Running /usr/bin/env mkdir -p /tmp as scrapper@192.168.1.32
+ DEBUG [9f07af88] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="" ; /usr/bin/env mkdir -p /tmp )
+  INFO [a8c28de2] Finished in 0.054 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-scrapper-production-sam.sh 0.0%
+  INFO Uploading /tmp/git-ssh-scrapper-production-sam.sh 100.0%
+  INFO [5f1b1d64] Running /usr/bin/env chmod 700 /tmp/git-ssh-scrapper-production-sam.sh as scrapper@192.168.1.32
+ DEBUG [5f1b1d64] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="" ; /usr/bin/env chmod 700 /tmp/git-ssh-scrapper-production-sam.sh )
+  INFO [a0795a99] Finished in 0.053 seconds with exit status 0 (successful).
+  INFO [51eade96] Running /usr/bin/env git ls-remote git@github.com:FM-Systems/myfreight-dashboard.git HEAD as scrapper@192.168.1.32
+ DEBUG [51eade96] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-scrapper-production-sam.sh" ; /usr/bin/env git ls-remote git@github.com:FM-Systems/myfreight-dashboard.git HEAD )
+ DEBUG [7b27eb96] 	Failed to add the host to the list of known hosts (/home/scrapper/.ssh/known_hosts).
+ DEBUG [7b27eb96] 	0aa9b6905a4957b5d2d7a73a66c89a651d9ab6ee	HEAD
+  INFO [7b27eb96] Finished in 3.855 seconds with exit status 0 (successful).
+  INFO [47330587] Running /usr/bin/env mkdir -p /srv/scrapper/shared /srv/scrapper/releases as scrapper@192.168.1.32
+ DEBUG [47330587] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="" ; /usr/bin/env mkdir -p /srv/scrapper/shared /srv/scrapper/releases )
+  INFO [f50b2569] Finished in 0.017 seconds with exit status 0 (successful).
+  INFO [20802310] Running /usr/bin/env mkdir -p /srv/scrapper/shared as scrapper@192.168.1.32
+ DEBUG [20802310] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="" ; /usr/bin/env mkdir -p /srv/scrapper/shared )
+  INFO [ac2008c3] Finished in 0.046 seconds with exit status 0 (successful).
+ DEBUG [135b1e9e] Running [ -f /srv/scrapper/shared/.env ] as scrapper@192.168.1.32
+ DEBUG [135b1e9e] Command: [ -f /srv/scrapper/shared/.env ]
+ DEBUG [9b68f42a] Finished in 0.052 seconds with exit status 1 (failed).
+ ERROR linked file /srv/scrapper/shared/.env does not exist on 192.168.1.32
