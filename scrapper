@@ -15,6 +15,5 @@ unless ARGV[0].nil?
   task.run
 
 else
-  puts Secrets.myfreight_api_token
   puts 'No task parameter present'
 end

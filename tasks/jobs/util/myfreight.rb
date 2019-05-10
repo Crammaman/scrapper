@@ -36,7 +36,7 @@ module Util
   end
 
   def myfreight_request request_path, method, payload = {}, response_content_type = :json
-    # puts("Sending #{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
+    #puts("Sending #{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
     uri = URI("#{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
 
     case method

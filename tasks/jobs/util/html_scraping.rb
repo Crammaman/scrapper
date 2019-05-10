@@ -6,7 +6,12 @@ module Util
 
   def get_elements_from_page args
     page = get_page args[:url]
-    page.xpath args[:path]
+
+    unless page.nil?
+      page.xpath args[:path]
+    else
+      ''
+    end
   end
 
   def get_page(url, attempts=1)
