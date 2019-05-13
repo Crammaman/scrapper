@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
-require_relative 'tasks/tasks'
-require_relative 'config/config'
+
 
 unless ARGV[0].nil?
+
+  TASK_NAME = ARGV[0]
+  require_relative 'config/config'
+
   task = case ARGV[0].downcase.to_sym
   when :courierpost_tracking
     CourierpostTracking.new customer_id: ARGV[1]
@@ -12,6 +15,7 @@ unless ARGV[0].nil?
     puts 'No such task'
   end
 
+  task.task_name = ARGV[0]
   task.run
 
 else

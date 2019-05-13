@@ -4,7 +4,7 @@ class GetConsignmentListJob < Job
   end
 
   def perform
-    manifests = myfreight_manifests( @customer_id, 'last_30_days' )
+    manifests = Myfreight.manifests( @customer_id, 'last_30_days' )
 
     manifests.map do |manifest|
       manifest['consignments'].map do |consignment_data|

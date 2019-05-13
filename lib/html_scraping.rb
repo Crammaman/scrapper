@@ -1,10 +1,10 @@
-require 'nokogiri'
-require 'net/http'
-require 'open-uri'
+module HtmlScraping
+  require 'nokogiri'
+  require 'net/http'
+  require 'open-uri'
 
-module Util
 
-  def get_elements_from_page args
+  def self.get_elements_from_page args
     page = get_page args[:url]
 
     unless page.nil?
@@ -14,7 +14,7 @@ module Util
     end
   end
 
-  def get_page(url, attempts=1)
+  def self.get_page(url, attempts=1)
 
   	Nokogiri::HTML(open(url))
 

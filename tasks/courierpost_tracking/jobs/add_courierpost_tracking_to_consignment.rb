@@ -4,7 +4,7 @@ class AddCourierpostTrackingToConsignmentJob < Job
   end
 
   def perform
-    elements = get_elements_from_page url: @consignment[:tracking_url], path: '//li[@class="status"]'
+    elements = HtmlScraping.get_elements_from_page url: @consignment[:tracking_url], path: '//li[@class="status"]'
 
     unless elements[1].nil?
       @consignment[:status] = elements[1].children[1].content

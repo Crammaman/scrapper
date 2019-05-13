@@ -7,6 +7,7 @@ class JobSet
   end
 
   def initialize job, args_array
+    @job = job
     @jobs = args_array.map { |args| job.new args }
   end
 
@@ -18,25 +19,35 @@ class JobSet
     results = []
     threads = []
 
+    if @jobs.length == 0
+
+      puts "No jobs to perform for #{@job}"
+      return results
+      
+    end
+
     mutex = Mutex.new
-    count = 1
+    count = 0
     each_slice( batch_size) do |job_batch|
 
       job_batch.each do |job|
         threads << Thread.new do
           results << job.perform
 
-          print "  #{count} out of #{@jobs.length} complete for #{job.class}\r"
-
           mutex.synchronize do
             count += 1
           end
+
+          print "\r  #{count} out of #{@jobs.length} complete for #{job.class}"
+
         end
       end
 
       threads.each { |thread| thread.join }
 
     end
+
+    puts "\r#{count} out of #{@jobs.length} complete for #{@jobs[0].class}  "
 
     results
   end

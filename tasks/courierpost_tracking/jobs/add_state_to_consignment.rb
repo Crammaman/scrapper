@@ -4,7 +4,7 @@ class AddStateToConsignmentJob < Job
   end
 
   def perform
-    consignment = myfreight_consignment @consignment[:id]
+    consignment = Myfreight.consignment @consignment[:id]
 
     @consignment[:state] = consignment['state']
 

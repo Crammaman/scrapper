@@ -4,7 +4,7 @@ class AddTrackingUrlToConsignmentJob < Job
   end
 
   def perform
-    tracking = myfreight_consignment_tracking @consignment[:id]
+    tracking = Myfreight.consignment_tracking @consignment[:id]
 
     @consignment[:tracking_url] = tracking['metadata']['web_url']
 
