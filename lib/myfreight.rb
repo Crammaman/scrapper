@@ -8,6 +8,30 @@ module Myfreight
     { username: ENV['MYFREIGHT_USER'], token: Secrets.myfreight_api_token }
   end
 
+  def self.start_export customer_id, from_date, to_date, site_code = nil
+    request "/api/users/switch_customer/#{customer_id}", :get
+    request "/api/exports", :post, { site_code: site_code, from_date: from_date.strftime("%d/%m/%Y"), to_date: to_date.strftime("%d/%m/%Y") }, :txt
+  end
+
+  def self.download_export id, out_path
+    # Might not handle particularly large downloads
+    redirect = request "/api/exports/#{id}", :get, nil, :html
+
+    download_link = redirect.xpath('//a').first.attributes['href'].to_s
+
+    uri = URI( download_link )
+
+    http = Net::HTTP.new(uri.hostname, uri.port)
+    http.use_ssl = true
+
+    req = Net::HTTP::Get.new(uri)
+
+    resp = http.request req
+
+    File.write out_path, resp.body
+
+  end
+
   def self.consignment id
     request "/api/consignments/#{id}", :get
   end
@@ -64,6 +88,7 @@ module Myfreight
     case response_content_type
       when :json then JSON.parse response.body
       when :xml then Nokogiri::XML response.body
+      when :html then Nokogiri::HTML response.body
     else
       response.body
     end

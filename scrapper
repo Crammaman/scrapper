@@ -9,8 +9,13 @@ unless ARGV[0].nil?
   task = case ARGV[0].downcase.to_sym
   when :courierpost_tracking
     CourierpostTracking.new customer_id: ARGV[1]
+
   when :query
     Query.new query_name: ARGV[1], query_args: ARGV[2..-1]
+
+  when :bhp_blackwoods_references
+    BhpBlackwoodsReferences.new
+
   else
     puts 'No such task'
   end
