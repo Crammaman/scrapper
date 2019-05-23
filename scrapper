@@ -16,13 +16,15 @@ unless ARGV[0].nil?
   when :bhp_blackwoods_references
     BhpBlackwoodsReferences.new
 
+  when :request_pricing
+    RequestPricing.new import_paths: ARGV[1]
+
   else
-    puts 'No such task'
+    raise 'No such task'
   end
 
-  task.task_name = ARGV[0]
   task.run
 
 else
-  puts 'No task parameter present'
+  raise 'No task parameter present'
 end

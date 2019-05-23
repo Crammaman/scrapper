@@ -6,6 +6,13 @@ class JobSet
     job_set.perform_in_batches_of batch_size
   end
 
+  def self.perform_now job, args_array
+    job_set = new job, args_array
+    job_set.map do |job|
+      job.perform
+    end
+  end
+
   def initialize job, args_array
     @job = job
     @jobs = args_array.map { |args| job.new args }
@@ -23,7 +30,7 @@ class JobSet
 
       puts "No jobs to perform for #{@job}"
       return results
-      
+
     end
 
     mutex = Mutex.new

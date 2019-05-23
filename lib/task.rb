@@ -1,8 +1,7 @@
 class Task
 
-  attr_accessor :task_name
   def task_name
-    @task_name || 'Task name not set'
+    TASK_NAME || 'Task name not set'
   end
 
   def run
