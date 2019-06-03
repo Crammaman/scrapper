@@ -19,6 +19,9 @@ unless ARGV[0].nil?
   when :request_pricing
     RequestPricing.new import_paths: ARGV[1]
 
+  when :scrape_transit_times
+    ScrapeTransitTimes.new carrier_code: ARGV[1]
+
   else
     raise 'No such task'
   end
