@@ -75,6 +75,7 @@ module Myfreight
     req.basic_auth user[:username], user[:token]
     http = Net::HTTP.new(uri.hostname, uri.port )
     http.use_ssl = true
+    http.open_timeout = 1
     http.read_timeout = 4
 
     #TODO handle request failures
