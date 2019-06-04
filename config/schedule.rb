@@ -5,6 +5,6 @@ every :day, at: '4:00 am' do
   scrapper 'courierpost_tracking 252'
 end
 
-every :day, at: '5:30 pm' do
+every :day, at: '6:00 pm' do
   scrapper 'bhp_blackwoods_references'
 end
