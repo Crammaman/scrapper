@@ -1,12 +1,25 @@
 class BhpBlackwoodsReferences < Task
   def run
     # GenerateExportReportSharedJob.perform_now customer_id: 164, site_code: 'BT4015-01', from_date: Date.today, to_date: Date.today
-    consignments = ExtractBhpConsignmentsJob.perform_now "output/bhp_blackwoods_references/bhp_blackwoods_references_consignment_export.csv", %w(M121997 M202787 M078537 M237023 M235657 M237025 M237026 M237029)
+    references = %w(078537-003 121997-002 121997-004 235657-027 235657-030 237023-002
+237025-004 237026-001 237029-003 b235657 M053957-004 M078537-001 M078537-002 M078537-003
+M078537-004 M121997-001 M121997-002 m121997-0032 M121997-004 M121997-005 M121997-006 M235657-009
+M235657-027 M235657-030 M235657-310 M235657-311 M235657-312 M235657-313 M235657-316 M235657-319
+M235657-365 M235657-369 M235657-379 M235657-392 M235657-393 M235657-394 M235657-398 M235657-400
+M235657-404 M235657-405 M237023-001 M237023-002 M237023-003 M237024-004 M237025-001 M237025-002
+M237025-004 M237026-001 M237026-002 M237026-003 M237029-001 M237029-003 M237029-006 M237029-008
+M237029-024 M237029-025 M237029-028 M237029-036 M237029-039 M237029-045 M237029-046 M237029-047
+M237029-048 M237029-049 M237029-050 M237029-051 M237029-052 M237029-053 M237029-055 M237029-056
+M237029-057 M237029-058 M237029-060 M237029-061 M237029-062 M237029-063 M237920-001 M237920-004
+M255185-001 M255185-002 M255185-003 M255185-004 M426200-010 m426200-437 M426200-439 W235657-001)
+
+    consignments = ExtractBhpConsignmentsJob.perform_now "output/bhp_blackwoods_references/bhp_blackwoods_references_consignment_export.csv",
+
     OutputConsignmentsJob.perform_now consignments, "output/bhp_blackwoods_references/BHP Consignments.csv"
     SendEmailSharedJob.perform_now(
       from: 'techsupport@myfreight.com.au',
       to:   'john.plesek@blackwoods.com.au',
-      body: 'Hi John, This is an example of what I\' put together, let me know if this is what they\'ll want or if I have to change it at all. Please forward to me rather than reply to the tech support address',
+      body: 'Hi John, please find BHP references attached.',
       attachment: "output/#{task_name}/BHP Consignments.csv"
     )
   end

@@ -11,7 +11,7 @@ class ExtractBhpConsignmentsJob < Job
     consignments = []
 
     CSV.foreach( @export_path, headers: :first_row ) do |row|
-      if @bhp_codes.include? row['Receiver Code'][0..6]
+      if @bhp_codes.include? row['Receiver Code']
         consignments << {
           consignment_number: row['Consignment Number'],
           references: row['Internal Reference'].split(/[, ]+/),
