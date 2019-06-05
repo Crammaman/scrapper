@@ -1,5 +1,4 @@
 require 'csv'
-
 class ImportConsignmentBulkUploadSharedJob < Job
   def initialize input_path
     @input_path = input_path

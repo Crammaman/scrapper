@@ -1,4 +1,3 @@
-require 'byebug'
 class GenerateExportReportSharedJob < Job
   def initialize args
     @customer_id = args[:customer_id]
