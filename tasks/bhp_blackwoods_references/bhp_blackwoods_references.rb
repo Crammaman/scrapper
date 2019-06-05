@@ -1,6 +1,6 @@
 class BhpBlackwoodsReferences < Task
   def run
-    # GenerateExportReportSharedJob.perform_now customer_id: 164, site_code: 'BT4015-01', from_date: Date.today, to_date: Date.today
+    GenerateExportReportSharedJob.perform_now customer_id: 164, site_code: 'BT4015-01', from_date: Date.today, to_date: Date.today
     references = %w(078537-003 121997-002 121997-004 235657-027 235657-030 237023-002
 237025-004 237026-001 237029-003 b235657 M053957-004 M078537-001 M078537-002 M078537-003
 M078537-004 M121997-001 M121997-002 m121997-0032 M121997-004 M121997-005 M121997-006 M235657-009
@@ -13,9 +13,10 @@ M237029-048 M237029-049 M237029-050 M237029-051 M237029-052 M237029-053 M237029-
 M237029-057 M237029-058 M237029-060 M237029-061 M237029-062 M237029-063 M237920-001 M237920-004
 M255185-001 M255185-002 M255185-003 M255185-004 M426200-010 m426200-437 M426200-439 W235657-001)
 
-    consignments = ExtractBhpConsignmentsJob.perform_now "output/bhp_blackwoods_references/bhp_blackwoods_references_consignment_export.csv",
+    consignments = ExtractBhpConsignmentsJob.perform_now "output/bhp_blackwoods_references/bhp_blackwoods_references_consignment_export.csv", references
 
     OutputConsignmentsJob.perform_now consignments, "output/bhp_blackwoods_references/BHP Consignments.csv"
+
     SendEmailSharedJob.perform_now(
       from: 'techsupport@myfreight.com.au',
       to:   'john.plesek@blackwoods.com.au',
