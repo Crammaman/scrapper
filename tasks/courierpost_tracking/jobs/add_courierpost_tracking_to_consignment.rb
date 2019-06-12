@@ -6,9 +6,9 @@ class AddCourierpostTrackingToConsignmentJob < Job
   def perform
     elements = HtmlScraping.get_elements_from_page url: @consignment[:tracking_url], path: '//li[@class="status"]'
 
-    @consignment[:status] = elements[1].children[1].content
+    @consignment[:status] = elements[1].nil? ? 'Not on CP site' : elements[1].children[1].content
 
-    unless elements[1].nil? || @consignment[:status] != 'Delivered'
+    unless @consignment[:status] != 'Delivered'
 
       date_string = elements[1].children[3].content
       date_parts = date_string.split('on')
