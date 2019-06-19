@@ -26,7 +26,11 @@ unless ARGV[0].nil?
     raise 'No such task'
   end
 
-  task.run
+  begin
+    task.run
+  rescue StandardError => e
+    Error.handle message: 'Task failed to run', error: e
+  end
 
 else
   raise 'No task parameter present'

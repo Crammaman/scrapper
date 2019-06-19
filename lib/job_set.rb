@@ -39,7 +39,13 @@ class JobSet
 
       job_batch.each do |job|
         threads << Thread.new do
-          results << job.perform
+          begin
+            results << job.perform
+          rescue StandardError => e
+
+            Error.handle message: 'Batch job failed', error: e
+
+          end
 
           mutex.synchronize do
             count += 1

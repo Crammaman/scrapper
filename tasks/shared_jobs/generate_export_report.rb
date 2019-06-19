@@ -8,19 +8,27 @@ class GenerateExportReportSharedJob < Job
   end
   def perform
     receiving_email = ENV['SCRAPPER_ENV'] == 'production' ? ENV['MYFREIGHT_USER'] : 'devs@myfreight.com.au'
-    query = "from:(no-reply@myfreight.com.au) to:#{receiving_email} subject:(Myfreight - Consignment Report) consignment report after:#{Date.today} before:#{Date.today + 1}"
+    query = "from:(no-reply@myfreight.com.au) to:#{receiving_email} subject:(Myfreight - Consignment Report) consignment report after:#{Date.today - 1} before:#{Date.today + 1}"
 
     # Clear out pre existing exports
     gmail = Gmail.new
     search_result = gmail.search query
+
     gmail.delete search_result unless search_result.nil?
 
     Myfreight.start_export( @customer_id, @from_date, @to_date, @site_code )
 
     search_result = nil
+    count = 0
     until search_result
       search_result = gmail.search query
-      sleep(5) unless search_result
+      if search_result.nil?
+        sleep(60)
+        count += 1
+
+      elsif count < 360
+        raise 'Export report not found within 3 hours'
+      end
     end
 
     export_email = gmail.get_message search_result[0].id
