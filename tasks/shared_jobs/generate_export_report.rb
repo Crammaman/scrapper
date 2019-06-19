@@ -26,7 +26,7 @@ class GenerateExportReportSharedJob < Job
         sleep(60)
         count += 1
 
-      elsif count < 360
+      elsif count > 360
         raise 'Export report not found within 3 hours'
       end
     end
