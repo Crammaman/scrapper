@@ -12,10 +12,8 @@ class CourierpostTracking < Task
 
     consignments = consignments.map{|consignment| consignment.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}}
 
-    consignments = JobSet.perform_now_in_batches_of 20, AddTrackingUrlAndStateToConsignmentJob, consignments[0..10]
+    consignments = JobSet.perform_now_in_batches_of 20, AddTrackingUrlAndStateToConsignmentJob, consignments
     consignments.reject! { |consignment| consignment[:state] != 'despatched' }
-
-    # consignments = JobSet.perform_now_in_batches_of 20, AddTrackingUrlToConsignmentJob, consignments
 
     consignments = JobSet.perform_now_in_batches_of 20, AddCourierpostTrackingToConsignmentJob, consignments
 
