@@ -33,7 +33,7 @@ module Myfreight
   end
 
   def self.consignment id
-    request "/api/consignments/#{id}", :get
+    request "/public/api/v1/consignments/#{id}", :get
   end
 
   def self.consignment_info id
