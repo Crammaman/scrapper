@@ -25,7 +25,7 @@ class Query < Task
   private
   def shift_if_first_is_email! query_args
     # Has an @ but is not an query parameter as it doesn't have an =
-    if query_args.first.include?('@') && !query_args.first.include?('=')
+    if query_args.first&.include?('@') && !query_args.first&.include?('=')
       query_args.shift
     end
   end

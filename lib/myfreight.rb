@@ -59,7 +59,7 @@ module Myfreight
     end
   end
 
-  def self.request request_path, method, payload = {}, response_content_type = :json
+  def self.request request_path, method, payload = {}, response_content_type = :json, attempt = 1
     # puts("Sending #{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
     uri = URI("#{ENV['MYFREIGHT_DOMAIN']}#{request_path}")
 
@@ -82,8 +82,10 @@ module Myfreight
     begin
       response = http.request(req)
     rescue
-      print "trying again                                                       \r"
-      response = http.request(req)
+      print "\rAttempt #{attempt} failed"
+      
+      raise 'Exceeded more than five attempts' if attempt > 5 
+      response = http.request(request_path, method, payload, response_content_type, attempt)
     end
 
     case response_content_type
