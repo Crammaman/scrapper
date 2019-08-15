@@ -9,7 +9,7 @@ class Query < Task
 
   def run
     results = RunQueryJob.perform_now query_name: @query_name, query_args: @query_args
-    OutputQueryResultsJob.perform_now results, output_path
+    OutputQueryResultsSharedJob.perform_now results, output_path
 
     if @email_to
       SendEmailSharedJob.perform_now(

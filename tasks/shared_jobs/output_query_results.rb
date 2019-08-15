@@ -1,4 +1,4 @@
-class OutputQueryResultsJob < Job
+class OutputQueryResultsSharedJob < Job
   def initialize results, absolute_path = nil
     @results = results
     @output_path = absolute_path || "output/#{task_name}/query_results.csv"

@@ -12,9 +12,12 @@ unless ARGV[0].nil?
 
   when :query
     Query.new query_name: ARGV[1], query_args: ARGV[2..-1]
-
+    
   when :bhp_blackwoods_references
     BhpBlackwoodsReferences.new
+    
+  when :export_to_domo
+    ExportToDomo.new
 
   when :request_pricing
     RequestPricing.new import_paths: ARGV[1]
