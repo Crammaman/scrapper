@@ -24,6 +24,9 @@ unless ARGV[0].nil?
 
   when :scrape_transit_times
     ScrapeTransitTimes.new carrier_code: ARGV[1]
+    
+  when :update_signatures
+    UpdateSignatures.new
 
   else
     raise 'No such task'

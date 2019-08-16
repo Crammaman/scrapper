@@ -56,6 +56,12 @@ class Gmail
 		attachment_data
 
   end
+	
+  def set_user_signature signature
+		send_as_settings = @gmail.list_user_setting_send_as 'me'
+		@gmail.patch_user_setting_send_as( send_as_settings.send_as[0].send_as_email, send_as_settings.send_as[0].send_as_email, { "signature": signature}, options: {})
+
+  end
 
   def send_email email_args
 
@@ -80,7 +86,7 @@ class Gmail
 		authorizer = Google::Auth::ServiceAccountCredentials.new(
 			token_credential_uri: "https://www.googleapis.com/oauth2/v4/token",
       audience:             "https://www.googleapis.com/oauth2/v4/token",
-      scope:                'https://mail.google.com/',
+      scope:                'https://www.googleapis.com/auth/gmail.settings.basic',
       issuer:               ENV['GMAIL_CLIENT_EMAIL'],
       signing_key:          OpenSSL::PKey::RSA.new(Secrets.gmail_private_key),
       project_id:           ENV['GMAIL_PROJECT_ID']
