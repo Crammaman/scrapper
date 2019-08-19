@@ -86,12 +86,12 @@ class Gmail
 		authorizer = Google::Auth::ServiceAccountCredentials.new(
 			token_credential_uri: "https://www.googleapis.com/oauth2/v4/token",
       audience:             "https://www.googleapis.com/oauth2/v4/token",
-      scope:                'https://www.googleapis.com/auth/gmail.settings.basic',
+			scope:               ['https://www.googleapis.com/auth/gmail.settings.basic',
+														'https://mail.google.com/'],
       issuer:               ENV['GMAIL_CLIENT_EMAIL'],
       signing_key:          OpenSSL::PKey::RSA.new(Secrets.gmail_private_key),
       project_id:           ENV['GMAIL_PROJECT_ID']
 		).configure_connection({})
-
 
 		impersonate_auth = authorizer.dup
     impersonate_auth.sub = @user

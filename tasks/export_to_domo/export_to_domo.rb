@@ -13,6 +13,14 @@ class ExportToDomo < Task
       body: "All carriers for all Myfreight customers and if they are managed",
       attachment: managed_accounts_path
     )
+    
+    SendEmailSharedJob.perform_now(
+      from: 'api@myfreight.com.au',
+      to: "de017d1c33c447a79bb58d066f0e8d04@myfreight-com-au.mail.domo.com",
+      subject: "Managed Accounts",
+      body: "All carriers for all Myfreight customers and if they are managed",
+      attachment: carrier_details_path
+    )
   end
   
   private 
