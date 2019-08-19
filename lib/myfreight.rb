@@ -76,16 +76,16 @@ module Myfreight
     http = Net::HTTP.new(uri.hostname, uri.port )
     http.use_ssl = true
     http.open_timeout = 4
-    http.read_timeout = 4
-
-    #TODO handle request failures
+    http.read_timeout = 6
+    response = {}
+    
     begin
       response = http.request(req)
     rescue
       print "\rAttempt #{attempt} failed"
       
       raise 'Exceeded more than five attempts' if attempt > 5 
-      response = http.request(request_path, method, payload, response_content_type, attempt)
+      return request(request_path, method, payload, response_content_type, attempt + 1)
     end
 
     case response_content_type
