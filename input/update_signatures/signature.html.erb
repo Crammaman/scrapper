@@ -1,42 +1,87 @@
-<div style="width: 540px">
-  <div>
-    <div>
-      <div style="float:left;padding:20px;color:rgb(0,0,0);font-family:&quot;Arial Black&quot;,Gadget,sans-serif;font-size:medium">
-        <img src="https://www.myfreight.com.au/myfreight-logo-complex-freight-made-simple/" style="width:200px;height:148px"></div>
-        <div style="float:left;height:200px;width:4px;background-color:rgb(246,148,49);color:rgb(0,0,0);font-family:&quot;Arial Black&quot;,Gadget,sans-serif;font-size:medium"></div>
-        <div style="float:left;width:290px;color:rgb(0,0,0);font-family:sans-serif;">
-          <div style="padding-left:20px">
-            <b><%= name %></b>
-            <div><%= position %></div>
-          </div>
-          <div style="float:left;padding-left:20px;padding-bottom:15px">
-            <div style="float:left;width:290px">
-              <img src="https://www.myfreight.com.au/telephone-icon-orange-triangle" style="float:left;width:43px;height:48px">
-              <p style="font-size:14px;height:43px;float:left;margin:4px 0px 0px">
-                <%= phone %><br>
-                <%= mobile %>
-              </p>
-            </div>
-            <div style="float:left;width:290px">
-              <img src="https://www.myfreight.com.au/website-icon-blue-triangle-3/" style="float:left;width:43px;height:48px">
-              <p style="font-size:14px;height:43px;float:left;margin:4px 0px 0px">
-                <%= email %><br>
-                www.myfreight.com.au
-              </p>
-            </div>
-            <div style="float:left;width:290px">
-              <img src="https://www.myfreight.com.au/location-icon-pink-triangle" style="float:left;width:43px;height:48px">
-              <div style="font-size:14px;height:43px;float:left;margin:4px 0px 0px">
-                <%= address_line_1 %><br>
-                <%= address_line_2 %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="float:left;margin:25px 0px 0px;color:rgb(0,0,0);font-family:&quot;Arial Black&quot;,Gadget,sans-serif;font-size:medium">
-          <img src="https://www.myfreight.com.au/truck_banner">
-        </div>
-      </div>
-    </div>
-    <p style='float:left;color:rgb(0,0,0);font-family:&quot;Times New Roman&quot;;font-size:medium;margin-top:0.5em'>This email is intended only for the person to whom it is addressed and/or otherwise authorised personnel. The information contained herein and attached is confidential and the property of Myfreight. If you are not the intended recipient, please be advised that viewing this message and any attachments, as well as copying, forwarding, printing, and disseminating any information related to this email is prohibited, and that you should not take any action based on the content of this email and/or its attachments. If you received this message in error, please contact the sender and destroy all copies of this email and any attachment. Please note that the views and opinions expressed herein are solely those of the author and do not necessarily reflect those of the business. No liability is accepted for any consequences arising from this email.</p>
+<table style="font-family:&quot;Arial Black&quot;,Gadget,sans-serif">
+  <tbody>
+    <tr>
+      <td style="padding:15px;">
+        <img src="https://www.myfreight.com.au/myfreight-logo-complex-freight-made-simple-small" style="width:120px;height:89px"></div>
+      </td>
+      <td style="width:2px;background-color:rgb(246,148,49);margin: 5px"></td>
+      <td>
+        <table>
+          <tbody>
+            <tr>
+              <td style="font-size:14px">
+                <b><%= name %></b><br>
+                <%= position %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img src="https://www.myfreight.com.au/telephone-icon-orange-triangle-small" style="width:26px;height:29px">
+                      </td>
+                      <td>
+                        <p style="font-size:11px; margin: 0px">
+                          <%= phone %><br>
+                          <%= mobile %>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img src="https://www.myfreight.com.au/website-icon-blue-triangle-small" style="width:26px;height:29px">
+                      </td>
+                      <td>
+                        <p style="font-size:11px; margin: 0px">
+                          <%= email %><br>
+                          www.myfreight.com.au
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img src="https://www.myfreight.com.au/location-icon-pink-triangle-small" style="width:26px;height:29px">
+                      </td>
+                      <td>
+                        <p style="font-size:11px; margin: 0px">
+                          <%= address_line_1 %><br>
+                          <%= address_line_2 %>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="line-height: 0px"><img src="https://www.myfreight.com.au/white_space" style="float:left;width:300px;height:5px"></img></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr style="line-height: 0px"><td></td></tr>
+  </tbody>
+</table>
+<div style="margin:10px">
+  <img src="https://www.myfreight.com.au/truck-banner-small" style="width:330px;height:65px">
 </div>
+<p>This email is intended only for the person to whom it is addressed and/or otherwise authorised personnel. The information contained herein and attached is confidential and the property of Myfreight. If you are not the intended recipient, please be advised that viewing this message and any attachments, as well as copying, forwarding, printing, and disseminating any information related to this email is prohibited, and that you should not take any action based on the content of this email and/or its attachments. If you received this message in error, please contact the sender and destroy all copies of this email and any attachment. Please note that the views and opinions expressed herein are solely those of the author and do not necessarily reflect those of the business. No liability is accepted for any consequences arising from this email.</p>
