@@ -10,7 +10,8 @@ module Myfreight
 
   def self.start_export customer_id, from_date, to_date, site_code = nil
     request "/api/users/switch_customer/#{customer_id}", :get
-    request "/api/exports", :post, { site_code: site_code, from_date: from_date.strftime("%d/%m/%Y"), to_date: to_date.strftime("%d/%m/%Y") }, :txt
+    puts ({ site_code: site_code, from_date: from_date.strftime("%d/%m/%Y"), to_date: to_date.strftime("%d/%m/%Y") }).to_json
+    puts request "/api/exports", :post, { site_code: site_code, from_date: from_date.strftime("%d/%m/%Y"), to_date: to_date.strftime("%d/%m/%Y") }, :txt
   end
 
   def self.download_export id, out_path
@@ -81,6 +82,7 @@ module Myfreight
     
     begin
       response = http.request(req)
+      puts response
     rescue
       print "\rAttempt #{attempt} failed"
       

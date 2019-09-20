@@ -9,6 +9,6 @@ every :day, at: '2:00 am' do
   scrapper 'export_to_domo'
 end
 
-every :day, at: '6:00 pm' do
-  scrapper 'bhp_blackwoods_references'
-end
+# every :day, at: '6:00 pm' do
+#   scrapper 'bhp_blackwoods_references'
+# end
