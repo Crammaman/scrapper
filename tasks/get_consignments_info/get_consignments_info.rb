@@ -6,8 +6,9 @@ class GetConsignmentsInfo < Task
   end
   
   def run
-    consignments_info = JobSet.perform_now_in_batches_of 20, ConsignmentInfoFromConsignmentNumberSharedJob, consignment_numbers
-    
+    summaries = JobSet.perform_now_in_batches_of 50, ConsignmentSummaryFromConsignmentNumberSharedJob, consignment_numbers
+    consignment_ids = summaries.map { |summary| !summary[:summary].nil? ? summary[:summary]['id'] : nil }.compact
+    consignments_info = JobSet.perform_now_in_batches_of 50, GetConsignmentInfo, consignment_ids
     OutputConsignmentsInfoJob.perform_now consignments_info
   end
   
