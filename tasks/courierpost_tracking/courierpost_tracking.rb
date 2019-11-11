@@ -8,7 +8,7 @@ class CourierpostTracking < Task
 
   def run
     consignments = GetConsignmentListJob.perform_now @customer_id
-    # consignments = JobSet.perform_now_in_batches_of 20, ConsignmentInfoFromConsignmentNumberSharedJob, CSV.read( 'file_name', headers: :first_row).map{|row| row['consignment_number']}
+    # consignments = JobSet.perform_now_in_batches_of 20, ConsignmentSummaryFromConsignmentNumberSharedJob, CSV.read( 'file_name', headers: :first_row).map{|row| row['consignment_number']}
 
     consignments = consignments.map{|consignment| consignment.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}}
 

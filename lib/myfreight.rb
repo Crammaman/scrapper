@@ -80,22 +80,20 @@ module Myfreight
     http.read_timeout = 6
     response = {}
     
-    begin
-      response = http.request(req)
-      puts response
-    rescue
-      print "\rAttempt #{attempt} failed"
-      
-      raise 'Exceeded more than five attempts' if attempt > 5 
-      return request(request_path, method, payload, response_content_type, attempt + 1)
-    end
-
+    response = http.request(req)
+    
     case response_content_type
-      when :json then JSON.parse response.body
-      when :xml then Nokogiri::XML response.body
-      when :html then Nokogiri::HTML response.body
+    when :json then JSON.parse response.body
+    when :xml then Nokogiri::XML response.body
+    when :html then Nokogiri::HTML response.body
     else
       response.body
     end
+    
+  rescue
+    print "\rAttempt #{attempt} failed"
+    
+    raise 'Exceeded more than five attempts' if attempt > 5 
+    return request(request_path, method, payload, response_content_type, attempt + 1)
   end
 end
