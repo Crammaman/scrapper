@@ -24,9 +24,12 @@ unless ARGV[0].nil?
     
   when :update_signatures
     UpdateSignatures.new
-    
+
   when :get_consignments_info
     GetConsignmentsInfo.new consignment_numbers_path: ARGV[1]
+
+  when :ftp_grep
+    FtpGrep.new user: ARGV[1], pattern: ARGV[2], folder: ARGV[3]
 
   else
     raise 'No such task'
