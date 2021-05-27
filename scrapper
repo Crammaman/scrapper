@@ -31,6 +31,9 @@ unless ARGV[0].nil?
   when :ftp_grep
     FtpGrep.new user: ARGV[1], pattern: ARGV[2], folder: ARGV[3]
 
+  when :geocode_localities
+    GeocodeLocalities.new
+
   else
     raise 'No such task'
   end
