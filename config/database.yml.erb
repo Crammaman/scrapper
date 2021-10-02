@@ -1,0 +1,16 @@
+development:
+  adapter: mysql2
+  pool: 10
+  idle_timeout: 0
+  database: wilberforce
+  host: localhost
+  username: <%= ENV['DB_USER'] %>
+  password: <%= Secrets.db_password %>
+production:
+  adapter: mysql2
+  pool: 10
+  idle_timeout: 0
+  database: wilberforce
+  host: localhost
+  username: <%= ENV['DB_USER'] %>
+  password: <%= Secrets.db_password %>

@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'erb'
 require_relative 'secrets'
 
 
@@ -8,6 +9,7 @@ require 'active_support/core_ext/string'
 ## Load environment configurations ##
 Secrets = SecretsConfig.instance
 Dotenv.load
+File.write('config/database.yml', ERB.new(File.read('config/database.yml.erb')).result(binding))
 
 ## Require files according to folder structure ##
 ## Lib and models are autoloaded so only required during execution ##
