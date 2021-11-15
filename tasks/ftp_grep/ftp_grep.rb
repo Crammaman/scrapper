@@ -6,7 +6,7 @@ class FtpGrep < Task
     @options["user"] = args[:user]
     @options["host"] = 'ftp.teamwilberforce.com'
     @options["ftp_server_count"] = 2
-    @options["check_folder"] = '/success/2021-04-13'
+    @options["check_folder"] = '/success/2021-11-30'
     @options["ftp_credentials_path"] = 'input/ftp_grep/FTP Credentials.csv'
     @options["temp_folder"] = '/tmp/ftp-grep/'
     @options["output_folder"] = 'output/ftp_grep/'
